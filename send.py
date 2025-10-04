@@ -10,7 +10,7 @@ def send_data(query_data, host='8.8.8.8', port=53):
             try:
                 s.sendto(query_data, (host, port))
                 response, _ = s.recvfrom(4096)
-                print(f"DNS response received (attempt {attempt + 1})") 
+                print(f"DNS response received (attempt {attempt + 1} of {retries})") 
                 return response   
             except socket.timeout:
                 print(f"Timeout occurred, retrying... (attempt {attempt + 1})")
